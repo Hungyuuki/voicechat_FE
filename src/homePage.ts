@@ -501,7 +501,7 @@ function leaveChannel() {
 
 function changeSelected(){
   let dropupContent = document.getElementById('dropup-content');
-  window.onclick = function(event) {
+  window.onmouseleave = function(event) {
     if (event.target == dropupContent) {
       dropupContent.style.display = "none";
     }
@@ -509,7 +509,7 @@ function changeSelected(){
 } 
 };
 
-function changeStatusBusyOrLeft(id: any) {
+function changeStatusStatus(id: any) {
   let userId = localStorage.getItem("userId");
   if (id == "0") {
     id = userId;
