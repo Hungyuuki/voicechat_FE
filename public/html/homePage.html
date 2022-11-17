@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scss/homePage.css">
+    <link rel="stylesheet" href="../scss/re.css">
+    <link rel="stylesheet" href="../scss/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Page</title>
+</head>
+
+<body>
+    <div class="title-bar">
+        <div class="close button" onclick="closeWindown()"><img src="../static/close.png"></div>
+        <div class="minimize button" onclick="minimizeWindown()"><img src="../static/minimize-icon-28.png" alt=""></div>
+        <div class="pin button" onclick="pinWindown()"><img src="../static/png_pin_90878.png" alt=""></div>
+        <div class="title draggable">VOICHAT</div>
+    </div>
+    <div id="floor-list">
+        <div class="floors" id="floors">
+            <div>
+
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="logoheader button"><img src="../static/logo.png"></div>
+        <div class="sub-select">
+            <div class="users button" onclick="getMemberList()">
+                <i class="fa-solid fa-users"></i>
+                <p>Users</p>
+            </div>
+
+            <div class="setting button">
+                <i class="fa-solid fa-gear"></i>
+                <p>Setting</p>
+            </div>
+
+            <div class="exit button">
+                <i class="fa-solid fa-right-from-bracket" onclick="window.api.invoke('leaveRoom')"></i>
+                <p>Exit</p>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button onclick="openRoomCreate()">ルームの追加</button>
+        </div>
+    </div>
+
+    <div id="room-list" class="room-list">
+        <div class="room" id="room">
+        </div>
+    </div>
+
+    <div id="add-floor">
+
+    </div>
+    <div class="footer">
+        <div class="logo button"><img src="../static/logo-discord.svg"></div>
+        <div class="mic button" onclick="changeStatusMic(0)">
+            <i class="fa-solid fa-microphone" id="mic-on" style="display: none;"></i>
+
+            <i class="fa-solid fa-microphone-slash" id="mic-off"></i>
+        </div>
+        <div class="headphone button" onclick="changeStatusSpeaker(0)">
+            <i class="fa-solid fa-headphones" id="speaker-on" style="display: none;"></i>
+            <img src="../static/earphone.png"  class="fa-solid fa-earphones" id="speaker-off" style="width: 20px; height: 20px;" >
+        </div>
+        <div class="notification button"><i class="fa-solid fa-comments"></i></div>
+        <div class="status button" onclick="changeStatusBusyOrLeft()">
+            <i class="fa-solid fa-toggle-on" style="display: none;" id="status-busy"></i>
+            <i class="fa-solid fa-toggle-off" id="status-left"></i>
+        </div>
+        <style>
+            .dropbtn {
+              background-color: #3498DB;
+              color: white;
+              padding: 10px 10px;
+              font-size: 12px;
+              border: none;
+              min-width: 80px;
+            }
+            
+            .dropup {
+              position: relative;
+              display: inline-block;
+            }
+            
+            .dropup-content {
+              display: none;
+              position: absolute;
+              background-color: #f1f1f1;
+              min-width: 70px;
+              min-height: 30px;
+              bottom: 50px;
+              z-index: 1;
+            }
+            
+            .dropup-content a {
+              color: black;
+              padding: 12px 16px;
+              text-decoration: none;
+              display: block;
+            }
+
+            .dropup-content a:hover {background-color: #ccc}
+            
+            /* .dropup:hover .dropup-content {
+              display: block;
+            } */
+            
+            .dropup:hover .dropbtn {
+              background-color: #2980B9;
+            }
+            </style>
+            </head>
+            <body>
+            <div class="dropup">
+              <button class="dropbtn" onclick="changeSelected()" id="status">ステータス</button>
+              <div class="dropup-content" id="dropup-content">
+                <a href="#">多忙</a>
+                <a href="#">離席</a>
+              </div>
+            </div>
+    </div>
+</body>
+<script src="../../dist/homePage.js"></script>
+
+</html>

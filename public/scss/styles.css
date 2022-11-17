@@ -1,0 +1,19 @@
+/* styles.css */
+
+.draggable {
+  -webkit-app-region: drag;
+}
+
+body {
+  font-family: Times, serif;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.text-context-middle {
+  margin-top: 30%;
+  margin-left: 20%;
+}
