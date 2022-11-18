@@ -142,7 +142,7 @@ function getPageFloor(floor_id: any) {
                                 `;
                 addElement(elFloors, "floors");
               }
-              position_px += 60;
+              position_px += 50;
             }
             let elButtonAdd = `<div class="floor add-new" style="top: ${position_px}px; background-color: black; z-index: -1;" onclick="addFloor()"><p>+</p></div>`;
             addElement(elButtonAdd, "floors");
@@ -167,24 +167,23 @@ function getPageFloor(floor_id: any) {
                 .then(function (resultUsers: any) {
                   for (let j = 0; j < resultUsers.room_users[0].length; j++) {
                     let text = `
-                                            <div class="user">
-                                                <div class="logo-user button"><img src=${resultUsers.room_users[0][j].user_avatar}></div>
-                                                <h4 class="button">${resultUsers.room_users[0][j].user_name}</h4>
-                                                <i class="fa-solid fa-calendar-days button"></i>
-                                                <div class="status button" onclick="changeStatusButton(${resultUsers.room_users[0][j].user_id})">
-                                                  <i class="fa-solid fa-toggle-on" style="display: none;"  id="status-busy-${resultUsers.room_users[0][j].user_id}"></i>
-                                                  <i class="fa-solid fa-toggle-off" id="status-left-${resultUsers.room_users[0][j].user_id}"></i>
-                                                </div>
-                                                <div class="mic button" onclick="changeStatusMic(${resultUsers.room_users[0][j].user_id})">
-                                                  <i class="fa-solid fa-microphone" style="display: none;" id="mic-on-${resultUsers.room_users[0][j].user_id}"></i>
-                                                  <i class="fa-solid fa-microphone-slash" id="mic-off-${resultUsers.room_users[0][j].user_id}"></i>
-                                                </div>
-                                                <div class="headphone button" onclick="changeStatusSpeaker(${resultUsers.room_users[0][j].user_id})">
-                                                  <i class="fa-solid fa-headphones" id="speaker-on-${resultUsers.room_users[0][j].user_id}" style="display: none;"></i>
-                                                  <img src="../static/earphone.png"  class="fa-solid fa-earphones" id="speaker-off-${resultUsers.room_users[0][j].user_id}" style="width: 20px; height: 20px;" >
-                                                </div>
-                                            </div>
-                                        `;
+                    <<div class="user">
+                    <div class="logo-user button"><img src=${resultUsers.room_users[0][j].user_avatar}></div>
+                    <h4 class="button">${resultUsers.room_users[0][j].user_name}</h4>
+                    <i class="fa-solid fa-calendar-days button"></i>
+                    <div class="status">
+                    <i onclick="changeSelected()">多忙中</i>
+                    </div>
+                    <div class="mic button" onclick="changeStatusMic(${resultUsers.room_users[0][j].user_id})">
+                      <i class="fa-solid fa-microphone" style="display: none;" id="mic-on-${resultUsers.room_users[0][j].user_id}"></i>
+                      <i class="fa-solid fa-microphone-slash" id="mic-off-${resultUsers.room_users[0][j].user_id}"></i>
+                    </div>
+                    <div class="headphone button" onclick="changeStatusSpeaker(${resultUsers.room_users[0][j].user_id})">
+                      <i class="fa-solid fa-headphones" id="speaker-on-${resultUsers.room_users[0][j].user_id}" style="display: none;"></i>
+                      <img src="../static/earphone.png"  class="fa-solid fa-earphones" id="speaker-off-${resultUsers.room_users[0][j].user_id}" style="width: 20px; height: 20px;" >
+                    </div>
+                </div>
+            `;
                     addElement(text, `room-${result.rooms[0][i].room_id}`);
                   }
                 })
@@ -501,7 +500,7 @@ function leaveChannel() {
 
 function changeSelected(){
   let dropupContent = document.getElementById('dropup-content');
-  window.onmouseleave = function(event) {
+  window.onmousemove = function(event) {
     if (event.target == dropupContent) {
       dropupContent.style.display = "none";
     }
@@ -509,32 +508,23 @@ function changeSelected(){
 } 
 };
 
-function changeStatusStatus(id: any) {
-  let userId = localStorage.getItem("userId");
-  if (id == "0") {
-    id = userId;
-  }
-  if (userId == id) {
-    window.api
-      .invoke("change-status-status", "")
-      .then(function (res: any) {
-        if (res.result[0].is_status == 0) {
-          changeStatus("status-left", "status-busy");
-          changeStatus(`status-left-${userId}`, `status-busy-${userId}`);
-          leaveChannel();
-        } else {
-          changeStatus("status-busy", "status-left");
-          changeStatus(`status-busy-${userId}`, `status-left-${userId}`);
-          joinChannel("status-left");
+
+
+window.onload = function(){
+	var dropup = document.getElementById('dropup');
+    var dropupContent = document.getElementById('dropup-content');
+    var status = document.getElementById('status');
+    var overlay = document.getElementById('backgroundOverlay');
+    document.onclick = function(e){
+        if(e.target == status){
+          dropup.style.display = 'block';
+          dropupContent.style.display = 'block';
+          overlay.style.display = 'block';
         }
-      })
-      .catch(function (err: any) {
-        console.error(err);
-      });
-  }
-}
-
-
-// function dropUpfnc() {
-//   document.querySelector(".dropup-content").classList.toggle("dropup");
-// }
+        if(e.target == overlay){
+          // dropup.style.display = 'block';
+          dropupContent.style.display = 'none';
+          overlay.style.display = 'none';
+        }
+    };
+};

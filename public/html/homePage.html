@@ -72,61 +72,94 @@
             <img src="../static/earphone.png"  class="fa-solid fa-earphones" id="speaker-off" style="width: 20px; height: 20px;" >
         </div>
         <div class="notification button"><i class="fa-solid fa-comments"></i></div>
-        <!-- <div class="status button" onclick="changeStatusStatus()">
-            <i class="fa-solid fa-toggle-on" style="display: none;" id="status-busy"></i>
-            <i class="fa-solid fa-toggle-off" id="status-left"></i>
-        </div> -->
+
         <style>
             .dropbtn {
-              background-color: #3498DB;
-              color: white;
-              padding: 10px 10px;
-              font-size: 12px;
-              border: none;
-              min-width: 80px;
+              background-color: #f1f1f1;
+              color: black;
+              font-size: 13px;
+              min-width: 95px;
+              border-width: 2px;
+              border-color: rgb(197, 197, 197);
+              border-radius: 5px;
+              text-align: center;
+              margin-left: 10px;
+              z-index: 2;
             }
             
             .dropup {
               position: relative;
-              display: inline-block;
+              display: block;
             }
             
             .dropup-content {
               display: none;
               position: absolute;
               background-color: #f1f1f1;
-              min-width: 70px;
-              min-height: 30px;
-              bottom: 50px;
+              min-width: 95px;
+              min-height: 20px;
+              bottom: 30px;
               z-index: 1;
+              border-width: 2px;
+              border-color: rgb(197, 197, 197);
             }
             
             .dropup-content a {
               color: black;
-              padding: 12px 16px;
+              padding: 5px 5px;
               text-decoration: none;
               display: block;
+              min-width: 95px;
+              border-color: rgb(197, 197, 197);
             }
 
             .dropup-content a:hover {background-color: #ccc}
             
-            /* .dropup:hover .dropup-content {
-              display: block;
-            } */
             
             .dropup:hover .dropbtn {
-              background-color: #2980B9;
+              background-color: #f1f1f1; 
             }
             </style>
+
+<style>
+    .status {
+  background-color: pink;
+  color: white;
+  font-size: 10px;
+  min-width: 30px;
+  min-height: 10px;
+  border-radius: 3px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px
+}
+
+#backgroundOverlay{
+    background-color: green;
+    /* visibility: hidden; */
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    /* display:block; */
+    width: 500px;
+    height: 500px;
+    z-index: 1;
+    display: none;
+
+}
+</style>
+            </style>
             </head>
-            <body>
-            <div class="dropup">
-              <button class="dropbtn" onclick="changeSelected()" id="status">ステータス</button>
-              <div class="dropup-content" id="dropup-content">
-                <a href="#">多忙</a>
-                <a href="#">離席</a>
+            <div class="dropup" id="dropup">
+                <button class="dropbtn" id="status">ステータス</button>
+                <div class="dropup-content" id="dropup-content">
+                  <a href="#">多忙</a>
+                  <a href="#">離席</a>
+                </div>
               </div>
-            </div>
+              <div id="backgroundOverlay"></div>
     </div>
 </body>
 <script src="../../dist/homePage.js"></script>
