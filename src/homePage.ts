@@ -167,12 +167,13 @@ function getPageFloor(floor_id: any) {
                 .then(function (resultUsers: any) {
                   for (let j = 0; j < resultUsers.room_users[0].length; j++) {
                     let text = `
-                    <<div class="user">
+                    <div class="user">
                     <div class="logo-user button"><img src=${resultUsers.room_users[0][j].user_avatar}></div>
                     <h4 class="button">${resultUsers.room_users[0][j].user_name}</h4>
                     <i class="fa-solid fa-calendar-days button"></i>
                     <div class="status">
-                    <i onclick="changeSelected()">多忙中</i>
+                    <a id="1">多忙中</a>
+                    <a id="2">離席中</a>
                     </div>
                     <div class="mic button" onclick="changeStatusMic(${resultUsers.room_users[0][j].user_id})">
                       <i class="fa-solid fa-microphone" style="display: none;" id="mic-on-${resultUsers.room_users[0][j].user_id}"></i>
@@ -511,7 +512,7 @@ function changeSelected(){
 
 
 window.onload = function(){
-	var dropup = document.getElementById('dropup');
+	  var dropup = document.getElementById('dropup');
     var dropupContent = document.getElementById('dropup-content');
     var status = document.getElementById('status');
     var overlay = document.getElementById('backgroundOverlay');
@@ -522,9 +523,72 @@ window.onload = function(){
           overlay.style.display = 'block';
         }
         if(e.target == overlay){
-          // dropup.style.display = 'block';
+          dropup.style.display = 'block';
           dropupContent.style.display = 'none';
           overlay.style.display = 'none';
         }
+        if(e.target == dropupContent){
+          dropup.style.display = 'block';
+          dropupContent.style.display = 'none';
+          overlay.style.display = 'none';
+          status.style.display = 'block';
+        }
     };
 };
+
+
+  // document.getElementById("busy").onclick = function() {
+  //   alert("多忙中");
+  //   console.log("1");
+  // };
+  // document.getElementById("left").onclick = function() {
+  //   alert("離席中");
+  //   console.log("2");
+  // };
+
+
+
+
+  document.getElementById("busy").onclick = function() {
+    let left = document.getElementById('2');
+    let busy = document.getElementById('1');
+        document.onclick = function(e){
+          console.log('1111111');
+              if(e.target == busy){
+              busy.style.display = 'block';
+              left.style.display = 'none';
+            };
+        };
+      };
+  
+  document.getElementById("left").onclick = function() {
+    let left = document.getElementById('2');
+    let busy = document.getElementById('1');
+        document.onclick = function(e){
+          console.log('2222222');
+              if(e.target == left){
+              left.style.display = 'block';
+              busy.style.display = 'none';
+            };
+        };
+    };
+  
+
+
+
+  // window.onload = function(){
+  // let left = document.getElementById('left');
+  // let busy = document.getElementById('busy');
+  //     document.onclick = function(e){
+  //           if(e.target == busy){
+  //           busy.style.display = 'block';
+  //           left.style.display = 'none';
+  //         };
+  //     };
+  //     document.onclick = function(e){
+  //           if(e.target == left){
+  //           left.style.display = 'block';
+  //           busy.style.display = 'none';
+  //         };
+  //     };
+  // };

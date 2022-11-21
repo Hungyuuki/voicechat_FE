@@ -157,7 +157,7 @@ body {
 
 .room .user {
   cursor: pointer;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .header-room {
@@ -165,7 +165,7 @@ body {
   align-items: center;
   background-color: #d9d9d9;
   border-radius: 5px 0 0 5px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   margin-top: 8px;
 }
 
@@ -199,19 +199,19 @@ body {
 }
 
 .user h4 {
-  min-width: 110px;
+  min-width: 70px;
   text-align: left;
 }
 
 .user .logo-user {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   padding: 5px;
 }
 
 .user .logo-user img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 25px;
 }
 
