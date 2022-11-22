@@ -172,8 +172,8 @@ function getPageFloor(floor_id: any) {
                     <h4 class="button">${resultUsers.room_users[0][j].user_name}</h4>
                     <i class="fa-solid fa-calendar-days button"></i>
                     <div class="status">
-                    <a id="1">多忙中</a>
-                    <a id="2">離席中</a>
+                    <p id="busy1" style="display:none">多忙中</p>
+                    <p id="left1" style="display:none">離席中</p>
                     </div>
                     <div class="mic button" onclick="changeStatusMic(${resultUsers.room_users[0][j].user_id})">
                       <i class="fa-solid fa-microphone" style="display: none;" id="mic-on-${resultUsers.room_users[0][j].user_id}"></i>
@@ -516,6 +516,8 @@ window.onload = function(){
     var dropupContent = document.getElementById('dropup-content');
     var status = document.getElementById('status');
     var overlay = document.getElementById('backgroundOverlay');
+    var busy = document.getElementById('busy');
+    var left = document.getElementById('left');
     document.onclick = function(e){
         if(e.target == status){
           dropup.style.display = 'block';
@@ -528,6 +530,12 @@ window.onload = function(){
           overlay.style.display = 'none';
         }
         if(e.target == dropupContent){
+          dropup.style.display = 'none';
+          dropupContent.style.display = 'none';
+          overlay.style.display = 'none';
+          status.style.display = 'block';
+        }
+        if(e.target == busy || e.target == left){
           dropup.style.display = 'block';
           dropupContent.style.display = 'none';
           overlay.style.display = 'none';
@@ -537,58 +545,42 @@ window.onload = function(){
 };
 
 
-  // document.getElementById("busy").onclick = function() {
-  //   alert("多忙中");
-  //   console.log("1");
-  // };
-  // document.getElementById("left").onclick = function() {
-  //   alert("離席中");
-  //   console.log("2");
-  // };
-
-
-
 
   document.getElementById("busy").onclick = function() {
-    let left = document.getElementById('2');
-    let busy = document.getElementById('1');
-        document.onclick = function(e){
-          console.log('1111111');
-              if(e.target == busy){
-              busy.style.display = 'block';
-              left.style.display = 'none';
-            };
-        };
-      };
-  
+let result1 = document.getElementById("busy1");
+let result2 = document.getElementById("left1");
+    result1.style.display='block';
+    result2.style.display='none';
+  };
   document.getElementById("left").onclick = function() {
-    let left = document.getElementById('2');
-    let busy = document.getElementById('1');
-        document.onclick = function(e){
-          console.log('2222222');
-              if(e.target == left){
-              left.style.display = 'block';
-              busy.style.display = 'none';
-            };
-        };
-    };
+let result1 = document.getElementById("busy1");
+let result2 = document.getElementById("left1");
+    result2.style.display='block';
+    result1.style.display='none';
+  };
   
-
-
-
-  // window.onload = function(){
-  // let left = document.getElementById('left');
-  // let busy = document.getElementById('busy');
-  //     document.onclick = function(e){
-  //           if(e.target == busy){
-  //           busy.style.display = 'block';
-  //           left.style.display = 'none';
-  //         };
-  //     };
-  //     document.onclick = function(e){
-  //           if(e.target == left){
-  //           left.style.display = 'block';
-  //           busy.style.display = 'none';
-  //         };
-  //     };
-  // };
+//   //get the option busy html
+//  var option1 = document.getElementById("busy");
+//   //get the option busy ts
+//  var result1 = document.getElementById("busy1");
+//      //get the option left html
+//  var option2 = document.getElementById("left");
+//      //get the option left ts
+//  var result2 = document.getElementById("left1");
+//  var dropupContent = document.getElementById('dropup-content');
+// function doBusy() {
+//   document.onclick = function(e){
+//   if(e.target==option1){
+//     result1.style.display='block';
+//     console.log("多忙中")
+//   }
+// }
+// }
+// function doLeft() {
+//   document.onclick = function(e){
+//   if(e.target==option2){
+//     result2.style.display='block';
+//     console.log("離席中")
+//   }
+// }
+// }

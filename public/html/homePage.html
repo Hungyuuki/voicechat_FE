@@ -77,7 +77,7 @@
             .dropbtn {
               background-color: #f1f1f1;
               color: black;
-              font-size: 13px;
+              font-size: 15px;
               min-width: 95px;
               border-width: 2px;
               border-color: rgb(197, 197, 197);
@@ -124,15 +124,16 @@
 
 <style>
     .status {
+  display: flex;
   background-color: pink;
+  justify-content: center;
+  align-items: center;
   color: white;
-  font-size: 10px;
-  min-width: 30px;
-  min-height: 10px;
-  border-radius: 3px;
+  font-size: 10.5px;
+  width: 60px;
+  height: 18px;
+  border-radius: 6px;
   text-align: center;
-  padding-left: 20px;
-  padding-right: 20px;
   padding-top: 8px;
   padding-bottom: 8px;
 }
@@ -157,8 +158,8 @@
             <div class="dropup" id="dropup">
                 <button class="dropbtn" id="status">ステータス</button>
                 <div class="dropup-content" id="dropup-content">
-                  <a id="busy" href="#">多忙</a>
-                  <a id="left" href="#">離席</a>
+                  <a id="busy">多忙</a>
+                  <a id="left">離席</a>
                 </div>
               </div>
               <div id="backgroundOverlay"></div>
