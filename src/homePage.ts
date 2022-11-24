@@ -170,10 +170,13 @@ function getPageFloor(floor_id: any) {
                     <div class="user">
                     <div class="logo-user button"><img src=${resultUsers.room_users[0][j].user_avatar}></div>
                     <h4 class="button">${resultUsers.room_users[0][j].user_name}</h4>
-                    <i class="fa-solid fa-calendar-days button"></i>
-                    <div class="status">
-                    <p id="busy1" style="display:none">多忙中</p>
-                    <p id="left1" style="display:none">離席中</p>
+                    <div id="statususers" style="background-color: pink">
+                    <p id="offline1" style="display:none">Offline</p>
+                    <p id="online1" style="display:none">Online</p>
+                    <p id="busy1" style="display:none">Đang bận</p>
+                    <p id="left1" style="display:none">Rời đi</p>
+                    <p id="calling1" style="display:none">Đang gọi điện</p>
+                    <p id="waiting1" style="display:none">Đang chờ</p>
                     </div>
                     <div class="mic button" onclick="changeStatusMic(${resultUsers.room_users[0][j].user_id})">
                       <i class="fa-solid fa-microphone" style="display: none;" id="mic-on-${resultUsers.room_users[0][j].user_id}"></i>
@@ -181,7 +184,7 @@ function getPageFloor(floor_id: any) {
                     </div>
                     <div class="headphone button" onclick="changeStatusSpeaker(${resultUsers.room_users[0][j].user_id})">
                       <i class="fa-solid fa-headphones" id="speaker-on-${resultUsers.room_users[0][j].user_id}" style="display: none;"></i>
-                      <img src="../static/earphone.png"  class="fa-solid fa-earphones" id="speaker-off-${resultUsers.room_users[0][j].user_id}" style="width: 20px; height: 20px;" >
+                      <img src="../static/earphone.png" class="fa-solid fa-earphones" id="speaker-off-${resultUsers.room_users[0][j].user_id}" style="width: 20px; height: 20px;">
                     </div>
                 </div>
             `;
@@ -511,76 +514,62 @@ function changeSelected(){
 
 
 
-window.onload = function(){
-	  var dropup = document.getElementById('dropup');
-    var dropupContent = document.getElementById('dropup-content');
-    var status = document.getElementById('status');
-    var overlay = document.getElementById('backgroundOverlay');
-    var busy = document.getElementById('busy');
-    var left = document.getElementById('left');
-    document.onclick = function(e){
-        if(e.target == status){
-          dropup.style.display = 'block';
-          dropupContent.style.display = 'block';
-          overlay.style.display = 'block';
-        }
-        if(e.target == overlay){
-          dropup.style.display = 'block';
-          dropupContent.style.display = 'none';
-          overlay.style.display = 'none';
-        }
-        if(e.target == dropupContent){
-          dropup.style.display = 'none';
-          dropupContent.style.display = 'none';
-          overlay.style.display = 'none';
-          status.style.display = 'block';
-        }
-        if(e.target == busy || e.target == left){
-          dropup.style.display = 'block';
-          dropupContent.style.display = 'none';
-          overlay.style.display = 'none';
-          status.style.display = 'block';
-        }
-    };
-};
 
 
 
-  document.getElementById("busy").onclick = function() {
-let result1 = document.getElementById("busy1");
-let result2 = document.getElementById("left1");
-    result1.style.display='block';
-    result2.style.display='none';
-  };
-  document.getElementById("left").onclick = function() {
-let result1 = document.getElementById("busy1");
-let result2 = document.getElementById("left1");
-    result2.style.display='block';
-    result1.style.display='none';
-  };
-  
-//   //get the option busy html
-//  var option1 = document.getElementById("busy");
-//   //get the option busy ts
-//  var result1 = document.getElementById("busy1");
-//      //get the option left html
-//  var option2 = document.getElementById("left");
-//      //get the option left ts
-//  var result2 = document.getElementById("left1");
-//  var dropupContent = document.getElementById('dropup-content');
-// function doBusy() {
-//   document.onclick = function(e){
-//   if(e.target==option1){
-//     result1.style.display='block';
-//     console.log("多忙中")
-//   }
-// }
-// }
-// function doLeft() {
-//   document.onclick = function(e){
-//   if(e.target==option2){
-//     result2.style.display='block';
-//     console.log("離席中")
-//   }
-// }
-// }
+window.onload = function () {
+  let dropupContent = document.getElementById("dropup-content");
+  document.onclick = function (element: any) {
+    if (element.target.id != "status") {
+      dropupContent.style.display = "none";
+    }
+  }
+}
+
+function showSelectStatus() {
+  let dropupContent = document.getElementById("dropup-content");
+  dropupContent.style.display = "block";
+}
+
+
+
+
+  // document.getElementById("offline").onclick = function() {
+  //   let offline = document.getElementById("offline");
+  //   offline.style.display='block';
+  // };
+  // document.getElementById("online").onclick = function() {
+  //   let online = document.getElementById("online");
+  //   online.style.display='block';
+  // };
+  // document.getElementById("busy").onclick = function() {
+  //   let busy = document.getElementById("busy");
+  //   busy.style.display='block';
+  //     };
+  // document.getElementById("left").onclick = function() {
+  //   let left = document.getElementById("left");
+  //   left.style.display='block';
+  //     };
+  // document.getElementById("calling").onclick = function() {
+  //   let calling = document.getElementById("calling");
+  //   calling.style.display='block';
+  //     };
+  // document.getElementById("waiting").onclick = function() {
+  //   let waiting = document.getElementById("waiting");
+  //   waiting.style.display='block';
+  //     };
+
+
+      function myFunction() {
+        document.getElementById("dropup-content").onclick = function(){
+          let content = document.getElementById("statususers");
+          content.style.display='block';
+        };
+      }
+
+let childs = document.querySelector(".dropup-content").children;
+  for (var i = 0; childs[i]; i++) {
+    childs[i].onclick = function () {
+      this.style.display='block';
+          }
+      }
