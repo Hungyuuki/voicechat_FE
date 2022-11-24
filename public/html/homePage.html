@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scss/homePage.css">
+    <link rel="stylesheet" href="../scss/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Page</title>
+</head>
+
+<body>
+    <div class="title-bar">
+        <div class="close button" onclick="closeWindown()"><img src="../static/close.png"></div>
+        <div class="minimize button" onclick="minimizeWindown()"><img src="../static/minimize.png" alt=""></div>
+        <div class="pin button" onclick="pinWindown()"><img src="../static/pin.png" alt=""></div>
+        <div class="title draggable">VOICHAT</div>
+    </div>
+    <div id="floor-list">
+        <div class="floors" id="floors">
+            <div>
+
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="logoheader button"><img src="../static/monolisix.png"></div>
+        <div class="sub-select">
+            <!-- <div class="users button" onclick="getMemberList()">
+                <i class="fa-solid fa-users"></i>
+                <p>Users</p>
+            </div> -->
+
+            <div class="settingbutton" id="settingbutton" onclick="settingForm()">
+                <i class="fa-solid fa-gear" ></i>
+                <!-- <p>Setting</p> -->
+            </div>
+        </div>
+<!-- 
+            <div class="buttons">
+                <button onclick="openRoomCreate()">ルームの追加</button>
+            </div> -->
+        </div>
+        <div id="room-list" class="room-list">
+            <div class="room" id="room">
+            </div>
+        </div>
+        <div id="statusMicHeadphone" class="statusMicHeadphone">
+            <!-- <div class="notification button" style="display: none;"><i class="fa-solid fa-comments"></i></div> -->
+            <div class="buttons">
+                <button id="status" onclick="showSelectStatus()">ステータス</button>
+                <div id="show-status" class="show-status">
+                    <p onclick="changeStatusUser(0)">オフライン</p>
+                    <p onclick="changeStatusUser(1)">オンライン中</p>
+                    <p onclick="changeStatusUser(2)">多忙中</p>
+                    <p onclick="changeStatusUser(3)">離席中</p>
+                    <p onclick="changeStatusUser(4)">電話中</p>
+                    <p onclick="changeStatusUser(5)">休憩中</p>
+                </div>
+            </div>
+            <div class="micbutton" onclick="changeStatusMic(0)">
+                <i class="fa-solid fa-microphone" id="mic-on" style="display: none;"></i>
+                <i class="fa-solid fa-microphone-slash" id="mic-off"></i>
+            </div>
+            <div class="headphonebutton" onclick="changeStatusSpeaker(0)">
+                <i class="fa-solid fa-headphones" id="speaker-on" style="display: none;" style=" width: 20px; height: 20px;"></i>
+                <img src="../static/earphone.png" class="fa-solid fa-earphones" id="speaker-off"
+                     style=" width: 20px; height: 20px;">
+            </div>
+            <div class="screenbutton">
+                <i class="fa-solid fa-tv" id="screen-on"></i>
+                <!-- <i class="fa-solid fa-microphone-slash" id="mic-off"></i> -->
+            </div>
+        </div>
+        <div id="add-floor">
+        </div>
+        <div class="footer">
+            <div class="logo button currentAvatar"><img id="currentAvatar" src="../static/logo-discord.svg"></div>
+            <div class="exitbutton" onclick="window.api.invoke('leaveRoom')">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <!-- <p>Exit</p> -->
+            </div>
+        </div>
+    </body>
+<script src="../../dist/homePage.js"></script>
+<script src="../../dist/settings.js"></script>
+</html>
