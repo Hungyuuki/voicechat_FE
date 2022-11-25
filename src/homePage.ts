@@ -610,3 +610,18 @@ async function Init() {
 }
 
 Init()
+
+
+
+
+
+var placeholder = document.getElementById('placeholder');
+var dropdown = document.getElementById('custom-select');
+
+placeholder.addEventListener('click', function() {
+    if(dropdown.classList.contains('active')) {
+        dropdown.classList.remove('active')
+    } else {
+        dropdown.classList.add('active')
+    }
+})

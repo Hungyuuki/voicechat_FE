@@ -20,37 +20,37 @@
         <div class="pin button" onclick="pinWindown()"><img src="../static/pin.png" alt=""></div>
         <div class="title draggable">VOICHAT</div>
     </div>
-    <div id="floor-list">
+    <!-- <div id="floor-list">
         <div class="floors" id="floors">
-            <div>
+            <div> -->
 
             </div>
         </div>
     </div>
     <div class="header">
         <div class="logoheader button"><img src="../static/monolisix.png"></div>
-        <div class="sub-select">
-            <!-- <div class="users button" onclick="getMemberList()">
-                <i class="fa-solid fa-users"></i>
-                <p>Users</p>
-            </div> -->
+        <!-- <div class="sub-select">
+        </div>
+        <div class="box">
+            <select>
+              <option><li><img src="../static/monolisix.png"><span>OPTION 1</span></li></option>
+              <option>OPTION 2</option>
+              <option>OPTION 3</option>
+              <option>OPTION 4</option>
+              <option>OPTION 5</option>
+            </select>
+          </div> -->
 
+<!-- end -->
             <div class="settingbutton" id="settingbutton" onclick="settingForm()">
                 <i class="fa-solid fa-gear" ></i>
-                <!-- <p>Setting</p> -->
             </div>
-        </div>
-<!-- 
-            <div class="buttons">
-                <button onclick="openRoomCreate()">ルームの追加</button>
-            </div> -->
         </div>
         <div id="room-list" class="room-list">
             <div class="room" id="room">
             </div>
         </div>
         <div id="statusMicHeadphone" class="statusMicHeadphone">
-            <!-- <div class="notification button" style="display: none;"><i class="fa-solid fa-comments"></i></div> -->
             <div class="buttons">
                 <button id="status" onclick="showSelectStatus()">ステータス</button>
                 <div id="show-status" class="show-status">
@@ -73,16 +73,41 @@
             </div>
             <div class="screenbutton">
                 <i class="fa-solid fa-tv" id="screen-on"></i>
-                <!-- <i class="fa-solid fa-microphone-slash" id="mic-off"></i> -->
             </div>
         </div>
         <div id="add-floor">
         </div>
         <div class="footer">
-            <div class="logo button currentAvatar"><img id="currentAvatar" src="../static/logo-discord.svg"></div>
+            <!-- <div class="logo button currentAvatar"><img id="currentAvatar" src="../static/logo-discord.svg"> -->
+            <button class="Button">
+                <span class="Button-inner">
+                    デザイナー
+                </span>
+                <span class="Badge">
+                  <p>GodaiYuusuke</p> 
+                </span>
+              </button>
+            <!-- </div> -->
             <div class="exitbutton" onclick="window.api.invoke('leaveRoom')">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <!-- <p>Exit</p> -->
+            </div>
+        </div>
+        <div class="sub-header">
+            <div class="barItem1">
+                <a>1F VOICHAT</a>
+            </div>
+            <div class="barItem2">
+                <a>1F M...</a>
+            </div>
+            <div class="barItem3">
+                <a>2F B...</a>
+            </div>
+            <div class="circleplus">
+            <svg class="svg-circleplus" viewBox="0 0 100 100">
+                <circle cx="50" cy="40" r="30" fill="none" stroke-width="3"></circle>
+                <line x1="35.5" y1="40" x2="65.5" y2="40" stroke-width="5"></line>
+                <line x1="50" y1="25.5" x2="50" y2="55.5" stroke-width="5"></line>
+              </svg>
             </div>
         </div>
     </body>
