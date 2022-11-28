@@ -149,8 +149,12 @@ function getPageFloor(floor_id: any) {
             for (let i = 0; i < result.rooms[0].length; i++) {
               let elRoom = `
               <div id="room-${result.rooms[0][i].room_id}">
-              <div class="header-room button"  onclick="joinRoom(${result.rooms[0][i].room_id})">
-                  <img src=${result.rooms[0][i].icon_images} alt="">
+              <div class="header-room button" onclick="joinRoom(${result.rooms[0][i].room_id})">
+              <div class="circle">
+              <svg class="svg-circle">
+                  <circle cx="50" cy="50" r="30"></circle>
+                </svg>
+              </div>
                   <h4 class="button">${result.rooms[0][i].room_name}</h4>
               </div>
               <div id="info-user-room-${result.rooms[0][i].room_id}">
@@ -193,7 +197,6 @@ function getPageFloor(floor_id: any) {
                                             <div class="user" id="user-${resultUsers.room_users[0][j].user_id}">
                                                 <div class="logo-user button"><img src=${resultUsers.room_users[0][j].user_avatar}></div>
                                                 <h4 class="button">${resultUsers.room_users[0][j].user_name}</h4>
-                                                <div class="status-users" style="background-color: ${colorBackroundStatus}">${resultUsers.room_users[0][j].user_login_status}</div>
                                                 <div class="mic button" onclick="changeStatusMic(${resultUsers.room_users[0][j].user_id})">
                                                   <i class="fa-solid fa-microphone" style="display: ${displayMicOn};" id="mic-on-${resultUsers.room_users[0][j].user_id}"></i>
                                                   <i class="fa-solid fa-microphone-slash" id="mic-off-${resultUsers.room_users[0][j].user_id}" style="display: ${displayMicOff};"></i>

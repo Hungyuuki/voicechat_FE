@@ -48,6 +48,9 @@ body {
   z-index: -10;
   width: 290px;
 }
+.header p{
+  /* position: relative; */
+}
 
 .sub-select {
   margin-top: 10px;
@@ -89,7 +92,7 @@ body {
   width: 16px;
   height: 16px;
   position: absolute;
-  right: 20px;
+  right: 10px;
   top: 12px;
 };
 
@@ -160,12 +163,14 @@ body {
 }
 
 .room {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-wrap: nowrap; */
+  /* flex-direction: column; */
   width: 290px;    /*setting chiều ngang*/
   padding-bottom: 5px;
   z-index: 10;
+  position: absolute;
+  top: 130px;
 }
 
 .room .user {
@@ -176,7 +181,7 @@ body {
 .header-room {
   display: flex;
   align-items: center;
-  background-color: #d9d9d9;
+  background-color: #f3f3f3;
   border-radius: 5px 0 0 5px;
   padding-left: 10px;
   margin-top: 8px;
@@ -186,11 +191,19 @@ body {
   padding: 20px 20px 20px 20px;
 }
 
-.header-room img {
+/* .header-room img {
   height: 50px;
   width: 50px;
   margin-right: 10px;
   border-radius: 5px;
+} */
+
+.svg-circle{
+  background: red;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .user {
@@ -397,6 +410,7 @@ button {
   position: static;
   right: -120px;
   bottom: -50px;
+  background-color: aqua;
 }
 .micbutton{
   position: absolute;
